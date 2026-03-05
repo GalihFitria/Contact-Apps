@@ -1,14 +1,22 @@
 import React from 'react';
+import Joi from 'joi';
+import { validateProps } from "../utils/validation";
 
+const contactInputPropsSchema = Joi.object({
+  addContact: Joi.func().required(),
+});
 
 class ContactInput extends React.Component {
   constructor(props) {
     super(props);
 
+    const validatedProps = validateProps(contactInputPropsSchema, props, 'ContactInput');
+
     // inisialisasi state
     this.state = {
       name: "",
       tag: "",
+      validatedProps,
     };
 
     this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
@@ -34,7 +42,9 @@ class ContactInput extends React.Component {
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addContact(this.state);
+
+    const { addContact } = this.state.validatedProps;
+    addContact(this.state);
   }
 
 
