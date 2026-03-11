@@ -1,5 +1,5 @@
-import React from 'react';
-import Joi from 'joi';
+import React from "react";
+import Joi from "joi";
 import { validateProps } from "../utils/validation";
 
 const contactInputPropsSchema = Joi.object({
@@ -10,7 +10,11 @@ class ContactInput extends React.Component {
   constructor(props) {
     super(props);
 
-    const validatedProps = validateProps(contactInputPropsSchema, props, 'ContactInput');
+    const validatedProps = validateProps(
+      contactInputPropsSchema,
+      props,
+      "ContactInput",
+    );
 
     // inisialisasi state
     this.state = {
@@ -47,16 +51,25 @@ class ContactInput extends React.Component {
     addContact(this.state);
   }
 
-
-render() {
-  return (
-    <form className="contact-input" onSubmit={this.onSubmitEventHandler}>
-        <input type="text" placeholder="Nama" value={this.state.name} onChange={this.onNameChangeEventHandler} />
-        <input type="text" placeholder="Tag" value={this.state.tag} onChange={this.onTagChangeEventHandler} />
+  render() {
+    return (
+      <form className="contact-input" onSubmit={this.onSubmitEventHandler}>
+        <input
+          type="text"
+          placeholder="Nama"
+          value={this.state.name}
+          onChange={this.onNameChangeEventHandler}
+        />
+        <input
+          type="text"
+          placeholder="Tag"
+          value={this.state.tag}
+          onChange={this.onTagChangeEventHandler}
+        />
         <button type="submit">Tambah</button>
-    </form>
-  )
-}
+      </form>
+    );
+  }
 }
 
 export default ContactInput;

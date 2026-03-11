@@ -8,7 +8,7 @@ function AddPage() {
 
   function onAddContactHandler(contact) {
     addContact(contact);
-    navigate('/');
+    navigate("/");
   }
 
   return (
