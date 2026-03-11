@@ -52,7 +52,7 @@ class RegisterInput extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmitEventHandler} className="register-input">
+      <form onSubmit={this.onSubmitHandler} className="register-input">
         <input
           type="text"
           placeholder="Nama"
